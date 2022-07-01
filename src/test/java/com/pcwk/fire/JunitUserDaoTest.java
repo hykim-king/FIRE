@@ -100,7 +100,7 @@ public class JunitUserDaoTest {
   }
   
   @Test
-//  @Ignore
+  @Ignore
   public void doUpdate() throws SQLException {
 	  //1. 전체삭제
 	  //2. 신규등록 :user01
@@ -116,11 +116,11 @@ public class JunitUserDaoTest {
 //	  dao.doDelete(user03);
 	  
 	  
-	  assertEquals(0, dao.getCount(user01));
+//	  assertEquals(0, dao.getCount(user01));
 	  
 	  //2.
 	  dao.doInsert(user01);
-	  assertEquals(1, dao.getCount(user01));
+//	  assertEquals(1, dao.getCount(user01));
 	  
 //	  //3.
 //	  UserVO vsVO = dao.doSelectOne(user01);
@@ -180,7 +180,7 @@ public class JunitUserDaoTest {
   
   
   @Test
-  @Ignore
+//  @Ignore
   public void addAndGet() {
 	  LOG.debug("====================");
 	  LOG.debug("=1.addAndGet()=");
@@ -212,7 +212,7 @@ public class JunitUserDaoTest {
 //		isSameUser(vsUser02, user02);
 		
 		
-		 dao.doRetrieve(searchVO);
+//		 dao.doRetrieve(searchVO);
 	} catch (SQLException e) {
 		LOG.debug("------------------");
 		LOG.debug("-SQLException-"+e.getMessage());

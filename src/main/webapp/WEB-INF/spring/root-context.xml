@@ -24,7 +24,7 @@
     </bean>
     
     <!-- 개발에 사용하는 Dummy Mail  -->
-<!--     <bean id="dummyMailSender" class="com.pcwk.ehr.cmn.DummyMailSender"></bean> -->
+<!--     <bean id="dummyMailSender" class="com.pcwk.fire.cmn.DummyMailSender"></bean> -->
     <!-- Naver smtp 계정 
          SMTP 간이 우편 전송 프로토콜(Simple Mail Transfer Protocol)의 약자. 이메일 전송에 사용되는 네트워크 프로토콜이다.
     -->
@@ -62,9 +62,9 @@
       </tx:attributes>
     </tx:advice>
     
-    <!-- pointcut *Service : com.pcwk.ehr.user.service-->
+    <!-- pointcut *Service : com.pcwk.fire.user.service-->
     <aop:config>
-       <aop:pointcut expression="execution(* com.pcwk.ehr..service.*Impl.*(..))" id="txPointCut"/>
+       <aop:pointcut expression="execution(* com.pcwk.fire..service.*Impl.*(..))" id="txPointCut"/>
        <!-- 트랜잭션 처리를 위한 advisor: advice+pointcut -->
        <aop:advisor advice-ref="txAdvice"
                     pointcut-ref="txPointCut"/>

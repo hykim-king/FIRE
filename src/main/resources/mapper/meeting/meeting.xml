@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pcwk.fire.meeting">
+  <!-- div 10(서울),20(경기)
+    null처리 -->
+    <sql id="meetingDiv">
+       <choose>
+         <when test=" null != div and !div.equals('')">
+          AND  div = #{div}
+         </when>         
+       </choose>
+    </sql>  
+    
+    <!-- 검색조건 : 10(제목),20(종류),30(등록자)-->
+    <sql id="searchCondition">
+       <choose>
+          <when test=" '10' == searchDiv  and !searchWord.equals('') ">
+           AND  m_title LIKE #{searchWord} || '%'
+          </when>
+          <when test=" '20' == searchDiv  and !searchWord.equals('') ">
+           AND m_kind LIKE #{searchWord} || '%'
+          </when>       
+          <when test=" '30' == searchDiv  and !searchWord.equals('') ">
+           AND reg_id LIKE #{searchWord} || '%'
+          </when>            
+       </choose>
+    </sql>
+    
+  <!-- 목록조회 -->
+    <select id="doRetrieve" parameterType="SearchVO" resultType="MeetingVO">
+        SELECT A.*,B.*
+        FROM (
+            SELECT TT1.rnum AS num,
+                   TT1.m_seq AS "mSeq",
+                   TT1.m_loc AS "mLoc",
+                   TT1.m_title AS "mTitle",
+                   TT1.m_num AS "mNum",
+                   TT1.m_kind AS "mKind",
+                   TT1.m_status AS "mStatus",
+                   TT1.m_date AS "mDate",
+                   TT1.m_contents AS "mContents",
+                   TT1.m_readcnt AS "mReadcnt",
+                   TT1.mod_id AS "modId",
+                   DECODE(TO_CHAR(SYSDATE, 'YYYYMMDD'),TO_CHAR(TT1.mod_dt,'YYYYMMDD')
+                          ,TO_CHAR(TT1.mod_dt,'HH24:MI')
+                          ,TO_CHAR(TT1.mod_dt,'YYYY-MM-DD')) AS "modDt"
+            FROM(
+                SELECT ROWNUM AS rnum, T1.*
+                FROM
+                (
+                    SELECT *
+                    FROM meeting
+                    --검색조건
+                    WHERE m_seq > 0
+                    <include refid="searchCondition"/>
+                    ORDER BY mod_dt DESC
+                ) T1
+                <![CDATA[ WHERE ROWNUM    <= #{pageSize} * (#{pageNum} - 1) + #{pageSize} ]]>
+            )TT1
+            <![CDATA[  WHERE rnum >= ( #{pageSize} * ( #{pageNum} - 1) +1)  ]]>
+        ) A CROSS JOIN
+        (SELECT COUNT(*) AS totalCnt
+          FROM meeting
+          --검색조건
+          WHERE m_seq > 0
+          <include refid="searchCondition"/>
+          
+        ) B
+    </select>
+  
+  <!-- 조회 건수 증가 -->
+    <update id="updateReadCnt" parameterType="MeetingVO">
+        UPDATE meeting
+           SET m_readcnt = NVL(m_readcnt,0) + 1
+         WHERE m_seq = #{mSeq}    
+    </update>
+  
+  <!-- 수정 -->
+    <update id="doUpdate" parameterType="MeetingVO">
+        UPDATE meeting
+        SET  m_title = #{mTitle}
+            ,m_contents = #{mContents}
+            ,m_loc = #{mLoc}
+            ,mod_dt = SYSDATE
+            ,mod_id = #{modId}
+        WHERE m_seq = #{mSeq}
+    </update>
+  
+  <select id="getCount" parameterType="MeetingVO" resultType="int">
+        SELECT COUNT(*) cnt
+        FROM meeting
+        WHERE m_seq LIKE #{mSeq} || '%'    
+   </select>
+  
+  <!-- 단건조회 -->
+    <select id="doSelectOne" parameterType="MeetingVO" resultType="MeetingVO">
+      SELECT m_seq AS mSeq,          
+			 m_loc AS mLoc,          
+			 m_title AS mTitle,      
+			 m_num AS mNum,          
+			 m_kind AS mKind,        
+			 m_status AS mStatus,    
+			 m_date AS mDate,        
+			 m_readcnt AS mReadcnt,   
+             TO_CHAR(reg_dt,'yyyy-mm-dd hh24:mi:ss')   AS "regDt",
+             reg_id   AS "regId",
+             TO_CHAR(mod_dt, 'yyyy-mm-dd hh24:mi:ss')  AS "modDt",
+             mod_id   AS "modId",
+			 m_contents AS mContents
+        FROM meeting
+        WHERE m_seq = #{mSeq}
+    </select>
+  <!-- 삭제 -->
+    <delete id="doDelete" parameterType="MeetingVO">
+        DELETE FROM meeting
+        WHERE   m_seq = #{mSeq}
+    </delete>
+  
+  <!-- 등록 -->
+	  <insert id="doInsert" parameterType="MeetingVO">
+	    INSERT INTO meeting (
+			    m_loc,
+			    m_title,
+			    m_num,
+			    m_kind,
+			    m_status,
+			    m_date,
+			    m_contents,
+			    m_readcnt,
+			    reg_id,
+			    mod_id
+			) VALUES (
+			    #{mLoc},
+			    #{mTitle},
+			    #{mNum},
+			    #{mKind},
+			    #{mStatus},
+			    #{mDate},
+			    #{mContents},
+			    0,
+			    #{regId},
+			    #{modId}
+			)
+	  </insert>
+  
+    
+</mapper>

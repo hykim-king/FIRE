@@ -53,12 +53,12 @@
           <!--// 제목 ----------------------------------------------------------->
           
           <!-- 버튼 -->
-          <div class="row text-right">
+          <div class="row text-left">
              <label class="col-sm-3 col-md-2 col-lg-2"></label>
              <div class="col-sm-9 col-md-10 col-lg-10">
-               <input type="button" class="btn btn-primary btn-sm" value="수정" />
-               <input type="button" class="btn btn-primary btn-sm" value="삭제" />
-               <input type="button" class="btn btn-primary btn-sm" value="목록" />
+               <input type="button" class="btn btn-dark btn-sm" value="수정" />
+               <input type="button" class="btn btn-dark btn-sm" value="삭제" />
+               <input type="button" class="btn btn-dark btn-sm" value="목록" />
              </div>
           </div>
           <!--// 버튼 ------------------------------------------------------------->

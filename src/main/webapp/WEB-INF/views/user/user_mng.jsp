@@ -38,6 +38,7 @@
     <script src="${CP_RES}/js/eclass.js"></script>
     
     <script src="${CP_RES}/js/bootstrap.min.js"></script>
+    
     <!-- jquery bootstrap paging -->
     <script src="${CP_RES}/js/jquery.bootpag.js"></script>
         
@@ -67,7 +68,7 @@
     		$('#page-selection').bootpag({
     		    total: pageTotal,
     		    page: page,
-    		    maxVisible: 10,
+    		    maxVisible: 13,
     		    leaps: true,
     		    firstLastUse: true,
     		    first: '←',
@@ -490,22 +491,22 @@
           <div class="row">
             <form action="#" class="form-inline col-sm-12 col-md-12 col-lg-12 text-right">
                <div class="form-group">
-                 <select class="form-control  input-sm" name="searchDiv" id="searchDiv" >
+                 <select class="form-control-sm  input-sm" name="searchDiv" id="searchDiv" >
                     <option value="">전체</option>
                     <option value="10">아이디</option>
                     <option value="20">이름</option>
                     <option value="30">이메일</option>
                  </select>
-                 <input type="text" class="form-control  input-sm" placeholder="검색어" 
+                 <input type="text" class="form-control-sm  input-sm" placeholder="검색어" 
                         name="searchWord" id="searchWord" />
-                 <select class="form-control  input-sm" name="pageSize" id="pageSize">
+                 <select class="form-control-sm  input-sm" name="pageSize" id="pageSize">
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="30">30</option>
                     <option value="50">50</option>
                     <option value="100">100</option>
                  </select>  
-               <input type="button" id="doRetrieve" class="btn btn-primary btn-sm" value="목록" />                           
+               <input type="button" id="doRetrieve" class="btn btn-dark" value="목록" />                           
                </div>
             </form>
           </div>
@@ -516,20 +517,20 @@
 <%--           totalCnt : ${totalCnt } --%>
           <div class="table-responsive">
            <table id="user_table" class="table table-striped table-bordered table-hover table-condensed">
-               <thead class="bg-primary">
+               <thead class="bg-dark">
                  <tr>
-                     <th class="text-center col-sm-1 col-md-1 col-lg-1">번호</th>
-                     <th class="text-center col-sm-1 col-md-1 col-lg-1">아이디</th>
-                     <th class="text-center col-sm-1 col-md-1 col-lg-1">닉네임</th>
-                     <th class="text-center col-sm-1 col-md-1 col-lg-1">비밀번호</th>
-                     <th class="text-center col-sm-1 col-md-1 col-lg-1">이름</th>
-                     <th class="text-center col-sm-1 col-md-1 col-lg-1">이메일</th>
-                     <th class="text-center col-sm-1 col-md-1 col-lg-1">생년월일</th>
-                     <th class="text-center col-sm-1 col-md-1 col-lg-1">성별</th>
-                     <th class="text-center col-sm-1 col-md-1 col-lg-1">전화번호</th>
-                     <th class="text-center col-sm-1 col-md-1 col-lg-1">관리자권한</th>
-                     <th class="text-center col-sm-1 col-md-1 col-lg-1">점수</th>
-                     <th class="text-center col-sm-1 col-md-1 col-lg-1">수정일</th>
+                     <th class="text-center text-light col-sm-1 col-md-1 col-lg-1">번호</th>
+                     <th class="text-center text-light col-sm-1 col-md-1 col-lg-1">아이디</th>
+                     <th class="text-center text-light col-sm-1 col-md-1 col-lg-1">닉네임</th>
+                     <th class="text-center text-light col-sm-1 col-md-1 col-lg-1">비밀번호</th>
+                     <th class="text-center text-light col-sm-1 col-md-1 col-lg-1">이름</th>
+                     <th class="text-center text-light col-sm-1 col-md-1 col-lg-1">이메일</th>
+                     <th class="text-center text-light col-sm-1 col-md-1 col-lg-1">생년월일</th>
+                     <th class="text-center text-light col-sm-1 col-md-1 col-lg-1">성별</th>
+                     <th class="text-center text-light col-sm-1 col-md-1 col-lg-1">전화번호</th>
+                     <th class="text-center text-light col-sm-1 col-md-1 col-lg-1">관리자권한</th>
+                     <th class="text-center text-light col-sm-1 col-md-1 col-lg-1">점수</th>
+                     <th class="text-center text-light col-sm-1 col-md-1 col-lg-1">수정일</th>
                  </tr>
                </thead>
                <tbody>
@@ -573,24 +574,23 @@
        <!-- div container -->
        <div class="container">
           <!-- 버튼 -->
-          <div class="row text-right">
+          <div class="row">
              <label class="col-sm-3 col-md-2 col-lg-2"></label>
              <div class="col-sm-9 col-md-10 col-lg-10">
-               <input type="button" id="initBtn" class="btn btn-primary btn-sm" value="초기화" />
-               <input type="button" id="add" class="btn btn-primary btn-sm" value="등록" />
-               <input type="button" id="doDelete" class="btn btn-primary btn-sm" value="삭제" />
-               <input type="button" id="doUpdate" class="btn btn-primary btn-sm" value="수정" />
+               <input type="button" id="initBtn" class="btn btn-dark" value="초기화" />
+               <input type="button" id="add" class="btn btn-dark" value="등록" />
+               <input type="button" id="doDelete" class="btn btn-dark" value="삭제" />
+               <input type="button" id="doUpdate" class="btn btn-dark" value="수정" />
              </div>
           </div>
           <!--// 버튼 ------------------------------------------------------------->
           <!-- form -->
           <form action="" class="form-horizontal">
-             <input type="text" name="idCheckYN" id="idCheckYN">
              <div class="form-group">
                   <label for="uId" class="col-sm-3 col-md-2 col-lg-2 control-label">아이디</label>
                   <div class="col-sm-9 col-md-10 col-lg-10">
                     <input type="text" maxlength="20" name="uId" id="uId" placeholder="아이디" class="form-control">
-                    <input type="button" id="idCheck" class="btn btn-primary btn-sm form-control" value="중복확인" />
+                    <input type="button" id="idCheck" class="btn btn-dark form-control" value="중복확인" />
                   </div>
              </div>
              <div class="form-group">
@@ -603,7 +603,6 @@
                   <label for="passwd" class="col-sm-3 col-md-2 col-lg-2 control-label">비번</label>
                   <div class="col-sm-9 col-md-10 col-lg-10">
                     <input type="password" maxlength="20" name="passwd" id="passwd" placeholder="비번" class="form-control">
-                    <input type="button" id="idPwEqual" class="btn btn-primary btn-sm form-control" value="아이디 비번 중복확인" />
                   </div>
              </div>
              <div class="form-group">

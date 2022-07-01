@@ -55,10 +55,10 @@
           <!-- tabble -->
           <div class="table-responsive">
            <table class="table table-striped table-bordered table-hover table-condensed">
-               <thead class="bg-primary">
+               <thead class="bg-dark">
                  <tr>
-                     <th class="text-center col-sm-2 col-md-2 col-lg-2">번호</th>
-                     <th class="text-center col-sm-10 col-md-10 col-lg-10">메뉴</th>
+                     <th class="text-center text-light col-sm-2 col-md-2 col-lg-2">번호</th>
+                     <th class="text-center text-light col-sm-10 col-md-10 col-lg-10">메뉴</th>
                  </tr>
                </thead>
                <tbody>

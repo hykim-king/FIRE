@@ -42,19 +42,19 @@
           <div class="row">
             <form action="#" class="form-inline col-sm-12 col-md-12 col-lg-12 text-right">
                <div class="form-group">
-                 <select class="form-control  input-sm">
+                 <select class="form-control-sm  input-sm">
                     <option value="">전체</option>
                     <option value="10">제목</option>
                     <option value="20">내용</option>
                  </select>
-                 <input type="text" class="form-control  input-sm"  placeholder="검색어" />
-                 <select class="form-control  input-sm">
+                 <input type="text" class="form-control-sm  input-sm"  placeholder="검색어" />
+                 <select class="form-control-sm  input-sm">
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="30">30</option>
                  </select>  
-               <input type="button" class="btn btn-primary btn-sm" value="목록" />
-               <input type="button" class="btn btn-primary btn-sm" value="등록" />                              
+               <input type="button" class="btn btn-dark btn-sm" value="목록" />
+               <input type="button" class="btn btn-dark btn-sm" value="등록" />                              
                </div>
             </form>
           
@@ -65,13 +65,13 @@
           <!-- tabble -->
           <div class="table-responsive">
            <table class="table table-striped table-bordered table-hover table-condensed">
-               <thead class="bg-primary">
+               <thead class="bg-dark">
                  <tr>
-                     <th class="text-center col-sm-1 col-md-1 col-lg-1">번호</th>
-                     <th class="text-center col-sm-6 col-md-6 col-lg-8">제목</th>
-                     <th class="text-center col-sm-2 col-md-2 col-lg-1">작성자</th>
-                     <th class="text-center col-sm-2 col-md-2 col-lg-1">작성일</th>
-                     <th class="text-center col-sm-1 col-md-1 col-lg-1">조회수</th>
+                     <th class="text-center text-light col-sm-1 col-md-1 col-lg-1">번호</th>
+                     <th class="text-center text-light col-sm-6 col-md-6 col-lg-8">제목</th>
+                     <th class="text-center text-light col-sm-2 col-md-2 col-lg-1">작성자</th>
+                     <th class="text-center text-light col-sm-2 col-md-2 col-lg-1">작성일</th>
+                     <th class="text-center text-light col-sm-1 col-md-1 col-lg-1">조회수</th>
                  </tr>
                </thead>
                <tbody>
